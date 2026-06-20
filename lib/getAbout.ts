@@ -8,7 +8,7 @@ export interface WorkExperience {
     start: string;
     end: string | { label: string };
     description?: string | string[];
-
+    location?: string;
     skills: string[];
 }
 
