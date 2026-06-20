@@ -8,8 +8,9 @@ interface SectionTitleProps {
 }
 
 export function SectionTitle({ title, subtitle, align = "left", className = "" }: SectionTitleProps) {
+    const hasMargin = /\bm[a-zA-Z]?-/.test(className);
     return (
-        <div className={`mb-12 ${align === "center" ? "text-center" : "text-left"} ${className}`}>
+        <div className={`${hasMargin ? "" : "mb-12"} ${align === "center" ? "text-center" : "text-left"} ${className}`}>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                 {title}
             </h2>
