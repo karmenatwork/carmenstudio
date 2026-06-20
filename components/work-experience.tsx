@@ -20,7 +20,7 @@ export default function WorkExperience({ limit, showTitle = true, bulletsLimit }
             {/* Experience Section */}
             <section id="experience" className="px-6 max-w-5xl mx-auto w-full">
                 {showTitle && (
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6">
                         <SectionTitle
                             title="Work Experience"
                             subtitle="My professional journey so far."
@@ -55,7 +55,7 @@ export default function WorkExperience({ limit, showTitle = true, bulletsLimit }
                                 </div>
 
                                 {/* Content Card */}
-                                <Card className="p-6">
+                                <Card className="p-4">
                                     <div className="flex flex-col gap-4">
                                         {/* Header details */}
                                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-border/40 pb-4">

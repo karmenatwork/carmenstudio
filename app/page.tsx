@@ -26,7 +26,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col gap-20 pb-20">
+    <div className="flex flex-col gap-10 pb-10">
       {/* Hero Section */}
       <section id="about" className="relative pt-20 pb-5 px-6 max-w-5xl mx-auto w-full flex flex-col items-center text-center gap-8">
         <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-2">
@@ -69,14 +69,13 @@ export default function Home() {
 
         <div className="grid grid-cols-1 gap-16">
           <div className="space-y-4">
-            <p className="text-xs font-mono text-center text-muted-foreground uppercase tracking-widest">Option B: Analog Polaroid</p>
+            {/* <p className="text-xs font-mono text-center text-muted-foreground uppercase tracking-widest">Option B: Analog Polaroid</p> */}
             <Carousel images={carouselImages} variant="polaroid" imagesPerView={3} gapBetweenImages="gap-6" autoPlay={true} />
           </div>
         </div>
       </section>
 
-
-      <WorkExperience limit={3} />
+      <WorkExperience limit={3} bulletsLimit={2} />
       <Projects />
     </div>
   );
