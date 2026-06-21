@@ -9,7 +9,7 @@ import { Badge } from "@/components/custom-ui/Badge";
 
 export default function AboutClient() {
     const [activeTab, setActiveTab] = useState<"story" | "experience">("story");
-    const { intro, mojo, bio, mailto } = aboutData;
+    const { fullName, headline, intro, mojo, bio, mailto } = aboutData;
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -28,21 +28,19 @@ export default function AboutClient() {
                     <div className="flex gap-8 -mb-px">
                         <button
                             onClick={() => setActiveTab("story")}
-                            className={`pb-4 text-base md:text-lg font-semibold border-b-2 transition-all cursor-pointer ${
-                                activeTab === "story"
-                                    ? "border-primary text-foreground"
-                                    : "border-transparent text-muted-foreground hover:text-foreground"
-                            }`}
+                            className={`pb-4 text-base md:text-lg font-semibold border-b-2 transition-all cursor-pointer ${activeTab === "story"
+                                ? "border-primary text-foreground"
+                                : "border-transparent text-muted-foreground hover:text-foreground"
+                                }`}
                         >
                             My Story
                         </button>
                         <button
                             onClick={() => setActiveTab("experience")}
-                            className={`pb-4 text-base md:text-lg font-semibold border-b-2 transition-all cursor-pointer ${
-                                activeTab === "experience"
-                                    ? "border-primary text-foreground"
-                                    : "border-transparent text-muted-foreground hover:text-foreground"
-                            }`}
+                            className={`pb-4 text-base md:text-lg font-semibold border-b-2 transition-all cursor-pointer ${activeTab === "experience"
+                                ? "border-primary text-foreground"
+                                : "border-transparent text-muted-foreground hover:text-foreground"
+                                }`}
                         >
                             My Experience & Resume
                         </button>
@@ -56,14 +54,15 @@ export default function AboutClient() {
                     {/* Left Column (Content) */}
                     <div className="lg:col-span-2 lg:order-first">
                         <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-                            Hola! 👋 I’m Carmen
+                            {fullName}
                         </h1>
+                        <div className="mt-1 mb-3 text-sm font-medium text-muted-foreground text-primary">{headline}</div>
                         <div className="mt-6 space-y-7 text-base text-muted-foreground leading-relaxed">
                             <p>{intro}</p>
                             {bio.map((paragraph, i) => (
                                 <p key={i}>{paragraph}</p>
                             ))}
-                            <p className="font-caveat text-3xl text-primary font-medium mt-8 leading-snug">
+                            <p className="font-caveat text-xl text-primary font-medium mt-8 leading-snug">
                                 &ldquo;{mojo}&rdquo;
                             </p>
                         </div>
@@ -142,7 +141,7 @@ export default function AboutClient() {
                                 <Card className="p-6 border-l-4 border-l-primary shadow-sm">
                                     <div className="flex justify-between items-start gap-2">
                                         <h3 className="text-lg font-bold leading-tight">AI & Machine Learning Bootcamp</h3>
-                                        <Badge className="bg-primary/10 text-primary hover:bg-primary/20 border-transparent whitespace-nowrap">2024</Badge>
+                                        <Badge className="whitespace-nowrap">2024</Badge>
                                     </div>
                                     <p className="text-primary font-medium text-sm mt-1">Caltech (California Institute of Technology)</p>
                                     <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
