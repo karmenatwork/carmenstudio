@@ -29,7 +29,7 @@ export function Header() {
                         </Link>
                     </div>
                     <Link href="/" className="text-xl font-bold tracking-tight text-foreground transition-opacity hover:opacity-80">
-                        Carmen <span className="text-primary">Studio</span>
+                        Carmen's <span className="text-primary">Studio</span>
                     </Link>
                     {/* <Image
                         src="/avatar.jpg"

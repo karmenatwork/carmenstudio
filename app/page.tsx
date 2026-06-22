@@ -53,7 +53,7 @@ export default function Home() {
             </Button> */}
             <Link
               href="/about"
-              className="inline-flex items-center justify-center rounded-full border border-border bg-transparent hover:bg-muted text-foreground h-14 px-8 text-base font-medium transition-colors shadow-xl shadow-primary/10"
+              className="inline-flex items-center justify-center rounded-full border border-border bg-transparent hover:bg-primary/80 text-primary hover:text-primary-foreground h-14 px-8 text-base font-medium transition-colors shadow-xl shadow-primary/10"
             >
               More about me
             </Link>
