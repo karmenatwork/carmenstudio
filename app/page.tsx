@@ -75,7 +75,7 @@ export default function Home() {
         </div>
       </section>
 
-      <WorkExperience limit={3} bulletsLimit={2} />
+      <WorkExperience limit={3} bulletsLimit={2} showSkills={false} />
 
     </div>
   );

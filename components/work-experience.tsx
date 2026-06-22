@@ -9,9 +9,10 @@ interface WorkExperienceProps {
     limit?: number;
     showTitle?: boolean;
     bulletsLimit?: number;
+    showSkills?: boolean;
 }
 
-export default function WorkExperience({ limit, showTitle = true, bulletsLimit }: WorkExperienceProps) {
+export default function WorkExperience({ limit, showTitle = true, bulletsLimit, showSkills = true }: WorkExperienceProps) {
     const allJobs = aboutData.workExperience as Job[];
     const jobs = limit ? allJobs.slice(0, limit) : allJobs;
 
@@ -95,7 +96,7 @@ export default function WorkExperience({ limit, showTitle = true, bulletsLimit }
                                         )}
 
                                         {/* Skills Badges */}
-                                        {job.skills && job.skills.length > 0 && (
+                                        {showSkills && job.skills && job.skills.length > 0 && (
                                             <div className="flex gap-1.5 flex-wrap mt-2">
                                                 {job.skills.map((skill: string, skillIndex: number) => (
                                                     <Badge key={skillIndex} variant="outline" className="text-[10px] px-2 py-0.5 bg-muted/30 hover:bg-muted/70 transition-colors">
