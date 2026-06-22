@@ -1,0 +1,67 @@
+---
+title: "M3 MacBook setup for development env - basics"
+description: "The M3 chip uses ARM architecture, so I prioritize software and tools that have native ARM support for optimal performance. Here are the must-have steps I inherited from my Intel configuration."
+author: "Carmen"
+created: "2023-12-21"
+updated: "2023-12-21"
+---
+
+The M3 chip uses ARM architecture, so I prioritize software and tools that have native ARM support for optimal performance. 
+Here are the must-have steps I inherited from my Intel configuration.
+
+
+
+1. **Install Homebrew (a free and open-source package manager):**
+It simplifies the installation of software on macOS and Linux, and has good ARM support now.
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Once you have Homebrew installed, you could start installing the basics dev tools such as:
+
+
+```shell
+brew install \\
+  git \\ - Version control
+  nvm \\ - Node version manager
+  pnpm \\ - Node package manager
+  gh \\ - Github CLI
+  wget \\ - cURL alternative
+
+```
+
+**Updated**:
+In the early versions of the Apple Silicon Macs, we needed to install `Rosseta 2` to install Homebrew.
+Luckily, Homebrew now has native support for Apple Silicon Macs, including those with M1, M2, and M3 chips. The installation process is the same as on Intel-based Macs, and it will automatically install the ARM64 version of Homebrew designed for Apple Silicon.
+
+
+2. **iTerm2:** It's one of the ARM-native options
+
+Download it [here](https://iterm2.com/downloads.html), then unzip and move it to Application, or 
+
+```
+$ brew install --cask iterm2
+````
+
+3. **Customize ZSH shell**
+
+ Since Catalina, the default shell in macOS has been `zsh` instead of the old default, `bash`. To customize `zsh`, I use the famous **Oh My ZSH!**
+
+``` 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+````
+
+Open the file `.zshrc` and customize as you like. **Tip:** [ohmyzsh Cheatsheet](https://github.com/ohmyzsh/ohmyzsh/wiki/Cheatsheet)
+
+There are a couple of formulas worth to install from the go: 
+
+```
+brew install zsh-autosuggestions zsh-syntax-highlighting
+``` 
+
+Add active these formulas add the following in your `.zshrc` file.
+`
+source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+`
