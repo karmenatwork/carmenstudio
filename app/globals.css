@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
@@ -39,7 +41,7 @@
   /* Blue 500 */
   --accent-foreground: #ffffff;
 
-  --muted: #f4f4f5;
+  --muted: #ededed;
   /* Zinc 100 */
   --muted-foreground: #71717a;
   /* Zinc 500 */
@@ -64,7 +66,7 @@
   /* Blue 400 - Softer for dark mode */
   --accent-foreground: #0a0a0a;
 
-  --muted: #1c1c1f;
+  --muted: #313133;
   /* Zinc 900-ish */
   --muted-foreground: #a1a1aa;
   /* Zinc 400 */
