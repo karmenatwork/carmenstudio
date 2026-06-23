@@ -57,6 +57,8 @@ export function Carousel({
 }: CarouselProps) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [effectiveImagesPerView, setEffectiveImagesPerView] = useState(imagesPerView)
+    const [touchStart, setTouchStart] = useState<number | null>(null)
+    const [touchEnd, setTouchEnd] = useState<number | null>(null)
 
     // Responsive logic
     useEffect(() => {
@@ -136,9 +138,6 @@ export function Carousel({
         ? `${parseFloat(gapBetweenImages.substring(4)) * 0.35}rem`
         : '0px'
 
-    const [touchStart, setTouchStart] = useState<number>(0)
-    const [touchEnd, setTouchEnd] = useState<number | null>(null)
-
     // Minimum swipe distance (in px)
     const minSwipeDistance = 50
 
@@ -152,7 +151,7 @@ export function Carousel({
     }
 
     const onTouchEnd = () => {
-        if (!touchStart || !touchEnd) return
+        if (touchStart === null || touchEnd === null) return
 
         const distance = touchStart - touchEnd
         const isLeftSwipe = distance > minSwipeDistance
