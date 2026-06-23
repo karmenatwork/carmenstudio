@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import aboutData from "@/data/about.json";
 import WorkExperience from "@/components/work-experience";
@@ -10,6 +10,7 @@ import { Badge } from "@/components/custom-ui/Badge";
 export default function AboutClient() {
     const [activeTab, setActiveTab] = useState<"story" | "experience">("story");
     const { fullName, headline, intro, mojo, bio, mailto } = aboutData;
+    const topRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -20,31 +21,38 @@ export default function AboutClient() {
         }
     }, []);
 
+    const handleSwitchToExperience = () => {
+        setActiveTab("experience");
+        setTimeout(() => {
+            topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
+    };
+
     return (
-        <div className="pb-20">
+        <div ref={topRef} className="pb-20">
             {/* Tab Switched Header */}
-            <div className="max-w-5xl mx-auto px-6 pt-10">
-                <div className="flex justify-center border-b border-border/60 mb-12">
-                    <div className="flex gap-8 -mb-px">
-                        <button
-                            onClick={() => setActiveTab("story")}
-                            className={`pb-4 text-base md:text-lg font-semibold border-b-2 transition-all cursor-pointer ${activeTab === "story"
-                                ? "border-primary text-foreground"
-                                : "border-transparent text-muted-foreground hover:text-foreground"
-                                }`}
-                        >
-                            My Story
-                        </button>
-                        <button
-                            onClick={() => setActiveTab("experience")}
-                            className={`pb-4 text-base md:text-lg font-semibold border-b-2 transition-all cursor-pointer ${activeTab === "experience"
-                                ? "border-primary text-foreground"
-                                : "border-transparent text-muted-foreground hover:text-foreground"
-                                }`}
-                        >
-                            My Experience & Resume
-                        </button>
-                    </div>
+            <div className="max-w-5xl mx-auto px-6 pt-10 flex justify-center mb-12">
+                <div className="inline-flex rounded-full bg-muted/60 p-1 border border-border/50">
+                    <button
+                        onClick={() => setActiveTab("story")}
+                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                            activeTab === "story"
+                                ? "bg-background text-foreground shadow-sm"
+                                : "text-muted-foreground hover:text-foreground"
+                        }`}
+                    >
+                        My Story
+                    </button>
+                    <button
+                        onClick={() => setActiveTab("experience")}
+                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                            activeTab === "experience"
+                                ? "bg-background text-foreground shadow-sm"
+                                : "text-muted-foreground hover:text-foreground"
+                        }`}
+                    >
+                        My Experience & Resume
+                    </button>
                 </div>
             </div>
 
@@ -65,6 +73,24 @@ export default function AboutClient() {
                             <p className="font-caveat text-xl text-primary font-medium mt-8 leading-snug">
                                 &ldquo;{mojo}&rdquo;
                             </p>
+                        </div>
+                        <div className="mt-10 pt-6 border-t border-border/40">
+                            <button
+                                onClick={handleSwitchToExperience}
+                                className="inline-flex items-center gap-2 rounded-full border border-border bg-transparent hover:bg-primary/5 hover:border-primary/30 text-primary hover:text-primary h-12 px-6 text-sm font-semibold transition-all shadow-sm cursor-pointer"
+                            >
+                                Explore My Experience & Resume
+                                <svg
+                                    className="h-4 w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
 
