@@ -20,7 +20,7 @@ export default function Home() {
     { src: laptopImg, alt: "Coding on laptop", label: "Coffee & coding" },
     { src: pianoImg, alt: "Playing piano", label: "Playing piano" },
     { src: hikingImg, alt: "Hiking in nature", label: "Hiking in nature" },
-    { src: asuncionImg, alt: "Asunción, Paraguay", label: "Vising my hometown Asunción, Paraguay" },
+    { src: asuncionImg, alt: "Asunción, Paraguay", label: "Visiting my hometown Asunción, Paraguay" },
     { src: goldenGateImg, alt: "Golden Gate Bridge", label: "My favorite place: Golden Gate Bridge" },
     { src: healthyMealImg, alt: "Healthy Meal", label: "Preparing healthy meals" },
   ];
