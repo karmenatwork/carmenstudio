@@ -103,7 +103,15 @@ export default async function GistPage({ params }: PageProps) {
                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
               />
             </svg>
-            <time dateTime={data.created}>{formatDate(data.created)}</time>
+            {data.updated && data.updated !== data.created ? (
+              <span>
+                Published <time dateTime={data.created}>{formatDate(data.created)}</time> (Updated <time dateTime={data.updated}>{formatDate(data.updated)}</time>)
+              </span>
+            ) : (
+              <span>
+                Published <time dateTime={data.created}>{formatDate(data.created)}</time>
+              </span>
+            )}
           </div>
 
           <span>•</span>
