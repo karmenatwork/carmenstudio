@@ -19,7 +19,7 @@ export function Header() {
             <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                     <div className="relative h-9 w-9 overflow-hidden rounded-full ring-2 ring-primary/10">
-                        <Link href="/" className="transition-opacity hover:opacity-80">
+                        <Link href="/" className="transition-opacity hover:opacity-80" onClick={() => setIsMenuOpen(false)}>
                             <Image
                                 src="/avatar.jpg"
                                 alt="Carmen"
@@ -28,7 +28,7 @@ export function Header() {
                             />
                         </Link>
                     </div>
-                    <Link href="/" className="text-xl font-bold tracking-tight text-foreground transition-opacity hover:opacity-80">
+                    <Link href="/" className="text-xl font-bold tracking-tight text-foreground transition-opacity hover:opacity-80" onClick={() => setIsMenuOpen(false)}>
                         Carmen's <span className="text-primary">Studio</span>
                     </Link>
                     {/* <Image
@@ -81,7 +81,7 @@ export function Header() {
 
             {/* Mobile Menu Overlay */}
             {isMenuOpen && (
-                <div className="md:hidden absolute top-16 left-0 w-full bg-background border-b border-border p-6 space-y-4 animate-in slide-in-from-top-2">
+                <div className="md:hidden absolute top-16 left-0 w-full bg-background/95 backdrop-blur-lg border-b border-border p-6 space-y-4 animate-in slide-in-from-top-2 z-50">
                     {navItems.map((item) => (
                         <Link
                             key={item.href}
