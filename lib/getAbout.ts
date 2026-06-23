@@ -12,6 +12,11 @@ export interface WorkExperience {
     skills: string[];
 }
 
+export interface CoreStrength {
+    title: string;
+    description: string;
+    skills: string[];
+}
 
 export interface AboutData {
     fullName: string;
@@ -26,6 +31,7 @@ export interface AboutData {
     mojo: string;
     mailto: string;
     workExperience: WorkExperience[];
+    coreStrengths: CoreStrength[];
 }
 
 const dataPath = path.join(process.cwd(), "data");

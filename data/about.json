@@ -140,5 +140,36 @@
                 "SQL"
             ]
         }
+    ],
+    "coreStrengths": [
+        {
+            "title": "Product Mindset",
+            "description": "I enjoy building software that solves real problems, balancing technical decisions with product goals and the people using it.",
+            "skills": [
+                "Product Thinking",
+                "Next.js",
+                "React",
+                "Ruby on Rails",
+                "PostgreSQL",
+                "Tailwind CSS"
+            ]
+        },
+        {
+            "title": "Curiosity & Innovation",
+            "description": "I'm always learning. Lately that means AI and intelligent workflows, but curiosity has been the constant throughout my career.",
+            "skills": [
+                "Agentic AI",
+                "Prompt Engineering"
+            ]
+        },
+        {
+            "title": "Community Impact",
+            "description": "Some of my most rewarding work happens outside the code—mentoring, speaking, and helping technology become more accessible.",
+            "skills": [
+                "Community Building",
+                "Mentorship",
+                "Public Speaking"
+            ]
+        }
     ]
 }
