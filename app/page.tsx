@@ -1,6 +1,5 @@
 import { getAboutData } from "@/lib/getAbout";
 import { Carousel, CarouselImageItem } from "@/components/carousel";
-import { Button } from "@/components/custom-ui/Button";
 import Link from "next/link";
 
 // Import images
@@ -11,7 +10,6 @@ import asuncionImg from "@/assets/images/personality/carmen-asuncion.jpg";
 import goldenGateImg from "@/assets/images/personality/carmen-golden-gate.jpg";
 import healthyMealImg from "@/assets/images/personality/healthy-meal.jpg";
 import WorkExperience from "@/components/work-experience";
-import Projects from "@/components/projects";
 
 export default function Home() {
   const about = getAboutData();
