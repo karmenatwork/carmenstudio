@@ -1,25 +1,16 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import aboutData from "@/data/about.json";
 import WorkExperience from "@/components/work-experience";
 import { Card } from "@/components/custom-ui/Card";
 import { Badge } from "@/components/custom-ui/Badge";
 
-export default function AboutClient() {
-    const [activeTab, setActiveTab] = useState<"story" | "experience">("story");
+export default function AboutClient({ initialTab = "story" }: { initialTab?: "story" | "experience" }) {
+    const [activeTab, setActiveTab] = useState<"story" | "experience">(initialTab);
     const { fullName, headline, intro, mojo, bio, mailto } = aboutData;
     const topRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get("tab") === "experience") {
-                setActiveTab("experience");
-            }
-        }
-    }, []);
 
     const handleSwitchToExperience = () => {
         setActiveTab("experience");
@@ -35,21 +26,19 @@ export default function AboutClient() {
                 <div className="inline-flex rounded-full bg-muted/60 p-1 border border-border/50">
                     <button
                         onClick={() => setActiveTab("story")}
-                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                            activeTab === "story"
-                                ? "bg-background text-foreground shadow-sm"
-                                : "text-muted-foreground hover:text-foreground"
-                        }`}
+                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${activeTab === "story"
+                            ? "bg-background text-foreground shadow-sm"
+                            : "text-muted-foreground hover:text-foreground"
+                            }`}
                     >
                         My Story
                     </button>
                     <button
                         onClick={() => setActiveTab("experience")}
-                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                            activeTab === "experience"
-                                ? "bg-background text-foreground shadow-sm"
-                                : "text-muted-foreground hover:text-foreground"
-                        }`}
+                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${activeTab === "experience"
+                            ? "bg-background text-foreground shadow-sm"
+                            : "text-muted-foreground hover:text-foreground"
+                            }`}
                     >
                         My Experience & Resume
                     </button>
