@@ -28,10 +28,11 @@
 }
 
 :root {
-  /* Light Mode - Refined Modern Theme */
-  --background: #ffffff;
-  --foreground: #18181b;
-  /* Zinc 950 */
+  /* Light Mode - Warm Intentional Theme */
+  --background: #fafaf9;
+  /* Stone 50 */
+  --foreground: #1c1917;
+  /* Stone 900 */
 
   --primary: #7c3aed;
   /* Violet 600 */
@@ -41,41 +42,43 @@
   /* Blue 500 */
   --accent-foreground: #ffffff;
 
-  --muted: #ededed;
-  /* Zinc 100 */
-  --muted-foreground: #71717a;
-  /* Zinc 500 */
+  --muted: #f5f5f4;
+  /* Stone 100 */
+  --muted-foreground: #78716c;
+  /* Stone 500 */
 
-  --border: #e4e4e7;
-  /* Zinc 200 */
+  --border: #e7e5e4;
+  /* Stone 200 */
 
   --card: #ffffff;
-  --card-foreground: #18181b;
+  --card-foreground: #1c1917;
 }
 
 .dark {
-  /* Dark Mode - Deep Midnight Theme */
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  /* Dark Mode - Warm Midnight Theme */
+  --background: #1c1917;
+  /* Stone 900 */
+  --foreground: #f5f5f4;
+  /* Stone 100 */
 
   --primary: #a78bfa;
-  /* Violet 400 - Softer for dark mode */
-  --primary-foreground: #0a0a0a;
+  /* Violet 400 */
+  --primary-foreground: #1c1917;
 
   --accent: #60a5fa;
-  /* Blue 400 - Softer for dark mode */
-  --accent-foreground: #0a0a0a;
+  /* Blue 400 */
+  --accent-foreground: #1c1917;
 
-  --muted: #313133;
-  /* Zinc 900-ish */
-  --muted-foreground: #a1a1aa;
-  /* Zinc 400 */
+  --muted: #292524;
+  /* Stone 800 */
+  --muted-foreground: #a8a29e;
+  /* Stone 400 */
 
-  --border: #27272a;
-  /* Zinc 800 */
+  --border: #44403c;
+  /* Stone 700 */
 
-  --card: #111111;
-  --card-foreground: #ededed;
+  --card: #292524;
+  --card-foreground: #f5f5f4;
 }
 
 body {
