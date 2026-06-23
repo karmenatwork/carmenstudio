@@ -136,7 +136,7 @@ export function Carousel({
         ? `${parseFloat(gapBetweenImages.substring(4)) * 0.35}rem`
         : '0px'
 
-    const [touchStart, setTouchStart] = useState<number | null>(null)
+    const [touchStart, setTouchStart] = useState<number>(0)
     const [touchEnd, setTouchEnd] = useState<number | null>(null)
 
     // Minimum swipe distance (in px)
