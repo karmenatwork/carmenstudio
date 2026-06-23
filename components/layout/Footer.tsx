@@ -11,7 +11,7 @@ export function Footer() {
                             Carmen <span className="text-primary">Studio</span>
                         </p>
                         <p className="text-sm text-muted-foreground leading-relaxed italic">
-                            "Building digital experiences with heart & code. Thanks for stopping by my corner of the internet! 💫"
+                            &quot;Building digital experiences with heart & code. Thanks for stopping by my corner of the internet! 💫&quot;
                         </p>
                     </div>
 

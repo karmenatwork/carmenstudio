@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/custom-ui/Button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Header() {
@@ -29,7 +28,7 @@ export function Header() {
                         </Link>
                     </div>
                     <Link href="/" className="text-xl font-bold tracking-tight text-foreground transition-opacity hover:opacity-80" onClick={() => setIsMenuOpen(false)}>
-                        Carmen's <span className="text-primary">Studio</span>
+                        Carmen&apos;s <span className="text-primary">Studio</span>
                     </Link>
                     {/* <Image
                         src="/avatar.jpg"
