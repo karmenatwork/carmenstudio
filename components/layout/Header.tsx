@@ -9,7 +9,6 @@ export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navItems = [
         { label: "About", href: "/about" },
-        { label: "Experience", href: "/#experience" },
         { label: "Gists", href: "/gists" }
     ];
 

@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+import React, { useState } from "react";
 import { Card } from "@/components/custom-ui/Card";
 import { SectionTitle } from "@/components/custom-ui/SectionTitle";
 import { Badge } from "@/components/custom-ui/Badge";
@@ -13,8 +14,14 @@ interface WorkExperienceProps {
 }
 
 export default function WorkExperience({ limit, showTitle = true, bulletsLimit, showSkills = true }: WorkExperienceProps) {
+    const [isExpanded, setIsExpanded] = useState(false);
     const allJobs = aboutData.workExperience as Job[];
-    const jobs = limit ? allJobs.slice(0, limit) : allJobs;
+    
+    const activeLimit = limit && !isExpanded ? limit : undefined;
+    const activeBulletsLimit = bulletsLimit && !isExpanded ? bulletsLimit : undefined;
+    const activeShowSkills = isExpanded ? true : showSkills;
+
+    const jobs = activeLimit ? allJobs.slice(0, activeLimit) : allJobs;
 
     return (
         <div className="flex flex-col gap-20">
@@ -82,7 +89,7 @@ export default function WorkExperience({ limit, showTitle = true, bulletsLimit, 
                                             <div className="text-sm text-muted-foreground leading-relaxed">
                                                 {Array.isArray(job.description) ? (
                                                     <ul className="space-y-3">
-                                                        {(bulletsLimit ? job.description.slice(0, bulletsLimit) : job.description).map((point: string, i: number) => (
+                                                        {(activeBulletsLimit ? job.description.slice(0, activeBulletsLimit) : job.description).map((point: string, i: number) => (
                                                             <li key={i} className="flex items-start gap-2.5">
                                                                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
                                                                 <span>{point}</span>
@@ -96,7 +103,7 @@ export default function WorkExperience({ limit, showTitle = true, bulletsLimit, 
                                         )}
 
                                         {/* Skills Badges */}
-                                        {showSkills && job.skills && job.skills.length > 0 && (
+                                        {activeShowSkills && job.skills && job.skills.length > 0 && (
                                             <div className="flex gap-1.5 flex-wrap mt-2">
                                                 {job.skills.map((skill: string, skillIndex: number) => (
                                                     <Badge key={skillIndex} variant="outline" className="text-[10px] px-2 py-0.5 bg-muted/30 hover:bg-muted/70 transition-colors">
@@ -112,15 +119,29 @@ export default function WorkExperience({ limit, showTitle = true, bulletsLimit, 
                     })}
                 </div>
 
-                {/* Show View Full Experience link on landing page when limit is applied */}
+                {/* Show Expand/Collapse button when limit is applied */}
                 {limit && allJobs.length > limit && (
                     <div className="flex justify-center mt-12">
-                        <Link
-                            href="/about?tab=experience"
-                            className="inline-flex items-center justify-center rounded-full border border-border bg-transparent hover:bg-muted text-foreground h-11 px-6 text-base font-medium transition-colors shadow-sm"
+                        <button
+                            onClick={() => setIsExpanded(!isExpanded)}
+                            className="inline-flex items-center justify-center rounded-full border border-border bg-transparent hover:bg-muted text-foreground h-11 px-6 text-base font-medium transition-colors shadow-sm cursor-pointer"
                         >
-                            View Full Career History &rarr;
-                        </Link>
+                            {isExpanded ? (
+                                <>
+                                    Show Less
+                                    <svg className="ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="18 15 12 9 6 15" />
+                                    </svg>
+                                </>
+                            ) : (
+                                <>
+                                    Show Full Career History
+                                    <svg className="ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="6 9 12 15 18 9" />
+                                    </svg>
+                                </>
+                            )}
+                        </button>
                     </div>
                 )}
             </section>

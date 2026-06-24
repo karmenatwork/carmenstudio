@@ -73,7 +73,16 @@ export default function Home() {
         </div>
       </section>
 
-      <WorkExperience limit={3} bulletsLimit={2} showSkills={false} />
+
+      {/* Career History Link */}
+      <section className="flex justify-center py-6">
+        <Link
+          href="/about?tab=experience"
+          className="inline-flex items-center justify-center rounded-full border border-border bg-transparent hover:bg-muted text-foreground h-12 px-8 text-base font-semibold transition-colors shadow-sm"
+        >
+          Explore Full Career History &rarr;
+        </Link>
+      </section>
 
     </div>
   );

@@ -147,8 +147,8 @@ export default function AboutClient({ initialTab = "story" }: { initialTab?: "st
                         </a>
                     </div>
 
-                    {/* Full Timeline */}
-                    <WorkExperience showTitle={false} />
+                    {/* Full Timeline off */}
+                    <WorkExperience limit={3} bulletsLimit={2} showSkills={false} showTitle={false} />
 
                     {/* Continuing Education Section */}
                     <section className="px-6 max-w-5xl mx-auto w-full">
