@@ -6,6 +6,7 @@ import aboutData from "@/data/about.json";
 import WorkExperience from "@/components/work-experience";
 import { Card } from "@/components/custom-ui/Card";
 import { Badge } from "@/components/custom-ui/Badge";
+import { SectionTitle } from "@/components/custom-ui/SectionTitle";
 
 export default function AboutClient({ initialTab = "story" }: { initialTab?: "story" | "experience" }) {
     const [activeTab, setActiveTab] = useState<"story" | "experience">(initialTab);
@@ -40,7 +41,7 @@ export default function AboutClient({ initialTab = "story" }: { initialTab?: "st
                             : "text-muted-foreground hover:text-foreground"
                             }`}
                     >
-                        My Experience & Resume
+                        My Experience
                     </button>
                 </div>
             </div>
@@ -127,10 +128,11 @@ export default function AboutClient({ initialTab = "story" }: { initialTab?: "st
                 <div className="space-y-16">
                     {/* Header Action inside Tab */}
                     <div className="max-w-5xl mx-auto px-6 w-full flex justify-between items-center border-b border-border/40 pb-6">
-                        <div>
-                            <h2 className="text-2xl font-bold tracking-tight text-foreground">Work History</h2>
-                            <p className="text-sm text-muted-foreground mt-1">Detailed list of professional roles and contributions.</p>
-                        </div>
+                        <SectionTitle
+                            title="Work Experience"
+                            subtitle="My professional journey so far."
+                            className="mb-0"
+                        />
                         <a
                             href="/Carmen-Diaz-resume.pdf"
                             download
