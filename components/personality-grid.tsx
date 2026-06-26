@@ -5,6 +5,7 @@ import { Card } from "@/components/custom-ui/Card";
 import laptopImg from "@/assets/images/personality/carmen-laptop.jpeg";
 import pianoImg from "@/assets/images/personality/carmen-piano.jpg";
 import hikingImg from "@/assets/images/personality/carmen-hiking.jpg";
+import soccerpyImg from "@/assets/images/personality/carmen-soccer-py.png";
 
 export default function PersonalityGrid() {
 

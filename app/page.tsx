@@ -9,7 +9,7 @@ import hikingImg from "@/assets/images/personality/carmen-hiking.jpg";
 import asuncionImg from "@/assets/images/personality/carmen-asuncion.jpg";
 import goldenGateImg from "@/assets/images/personality/carmen-golden-gate.jpg";
 import healthyMealImg from "@/assets/images/personality/healthy-meal.jpg";
-import WorkExperience from "@/components/work-experience";
+import soccerpyImg from "@/assets/images/personality/carmen-soccer-py.png";
 
 export default function Home() {
   const about = getAboutData();
@@ -21,6 +21,7 @@ export default function Home() {
     { src: asuncionImg, alt: "Asunción, Paraguay", label: "Visiting my hometown Asunción, Paraguay" },
     { src: goldenGateImg, alt: "Golden Gate Bridge", label: "My favorite place: Golden Gate Bridge" },
     { src: healthyMealImg, alt: "Healthy Meal", label: "Preparing healthy meals" },
+    { src: soccerpyImg, alt: "Watching Py FIFA World Cup 2026", label: "Supporting 🇵🇾 in the FIFA World Cup 2026" },
   ];
 
   return (
