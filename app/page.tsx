@@ -1,7 +1,7 @@
 import { getAboutData } from "@/lib/getAbout";
 import { Carousel, CarouselImageItem } from "@/components/carousel";
 import CoreStrengths from "@/components/core-strengths";
-import CurrentFocus from "@/components/current-focus";
+import EditorialConcepts from "@/components/editorial-concepts";
 import Link from "next/link";
 
 // Import images
@@ -78,6 +78,8 @@ export default function Home() {
 
       {/* Core Strengths Section */}
       <CoreStrengths showSkills={false} />
+
+      <EditorialConcepts />
 
       {/* Career History Link */}
       <section className="flex justify-center py-6">
