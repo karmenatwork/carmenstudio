@@ -58,6 +58,29 @@ export default function Home() {
             >
               More about me
             </Link>
+            <a
+              href="/Carmen-Diaz-resume.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full border border-primary/20 bg-primary/5 hover:bg-primary/10 text-primary h-14 px-8 text-base font-medium transition-colors shadow-xl shadow-primary/5"
+            >
+              <svg
+                className="mr-2 h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+              Resume
+            </a>
           </div>
         </div>
       </section>

@@ -9,7 +9,8 @@ export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navItems = [
         { label: "About", href: "/about" },
-        { label: "Gists", href: "/gists" }
+        { label: "Gists", href: "/gists" },
+        { label: "Resume", href: "/Carmen-Diaz-resume.pdf", isDownload: true }
     ];
 
     return (
@@ -43,15 +44,31 @@ export function Header() {
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className="text-sm font-medium text-muted-foreground hover:text-primary traqnsition-colors"
-                        >
-                            {item.label}
-                        </Link>
-                    ))}
+                    {navItems.map((item) => {
+                        if (item.isDownload) {
+                            return (
+                                <a
+                                    key={item.href}
+                                    href={item.href}
+                                    download
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm font-medium text-muted-foreground hover:text-primary traqnsition-colors"
+                                >
+                                    {item.label}
+                                </a>
+                            );
+                        }
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className="text-sm font-medium text-muted-foreground hover:text-primary traqnsition-colors"
+                            >
+                                {item.label}
+                            </Link>
+                        );
+                    })}
                     <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border">
                         <ThemeToggle />
                         {/* <Button size="sm" className="rounded-full shadow-lg shadow-primary/20">
@@ -80,16 +97,33 @@ export function Header() {
             {/* Mobile Menu Overlay */}
             {isMenuOpen && (
                 <div className="md:hidden absolute top-16 left-0 w-full bg-background/95 backdrop-blur-lg border-b border-border p-6 space-y-4 animate-in slide-in-from-top-2 z-50">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className="block text-lg font-medium text-muted-foreground hover:text-primary"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            {item.label}
-                        </Link>
-                    ))}
+                    {navItems.map((item) => {
+                        if (item.isDownload) {
+                            return (
+                                <a
+                                    key={item.href}
+                                    href={item.href}
+                                    download
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block text-lg font-medium text-muted-foreground hover:text-primary"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    {item.label}
+                                </a>
+                            );
+                        }
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className="block text-lg font-medium text-muted-foreground hover:text-primary"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                {item.label}
+                            </Link>
+                        );
+                    })}
                     {/* <Button className="w-full mt-4 rounded-full">Contact Me</Button> */}
                 </div>
             )}
