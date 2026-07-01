@@ -23,8 +23,32 @@ import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
-  title: "Carmen | Full Stack Developer",
-  description: 'I am Carmen, a Software Developer and Mom based in San Francisco, CA ',
+  metadataBase: new URL("https://carmendiaz.io"),
+  title: {
+    default: "Carmen Díaz | Senior Software Engineer",
+    template: "%s | Carmen Díaz",
+  },
+  description: "A Software Engineer blending design, clarity, and thoughtful engineering. Focuses on full-stack development, community mentorship, and continuous learning.",
+  keywords: ["Carmen Díaz", "Software Engineer", "Senior Software Engineer", "Full Stack Developer", "San Francisco Bay Area", "Ruby on Rails", "React", "Next.js"],
+  authors: [{ name: "Carmen Díaz" }],
+  creator: "Carmen Díaz",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Carmen Díaz | Senior Software Engineer",
+    description: "A Software Engineer blending design, clarity, and thoughtful engineering. Focuses on full-stack development, community mentorship, and continuous learning.",
+    url: "https://carmendiaz.io",
+    siteName: "Carmen Díaz Studio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Carmen Díaz | Senior Software Engineer",
+    description: "A Software Engineer blending design, clarity, and thoughtful engineering.",
+  },
 };
 
 export default function RootLayout({
@@ -37,6 +61,42 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} antialiased text-foreground flex flex-col min-h-screen`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Carmen Díaz",
+              "url": "https://carmendiaz.io",
+              "image": "https://carmendiaz.io/avatar.jpg",
+              "jobTitle": "Senior Software Engineer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Software Engineering Consultant"
+              },
+              "alumniOf": [
+                {
+                  "@type": "EducationalOrganization",
+                  "name": "Catholic University of Asunción"
+                },
+                {
+                  "@type": "EducationalOrganization",
+                  "name": "National University of Asunción"
+                }
+              ],
+              "sameAs": [
+                "https://www.linkedin.com/in/carmen-diaz/"
+              ],
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Francisco Bay Area",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            })
+          }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -50,7 +110,6 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
       </body>
-
     </html>
   );
 }
