@@ -216,7 +216,8 @@ export function Carousel({
                                 {image.label && (
                                     <div className="mt-4 text-center">
                                         <p className="font-caveat text-md text-zinc-800 tracking-tight leading-none rotate-[-1deg]">
-                                            {image.label}
+                                            <span className="font-bold block mb-1">{image.alt}</span>
+                                            <span className="block">{image.label}</span>
                                         </p>
                                     </div>
                                 )}

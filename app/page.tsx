@@ -17,13 +17,13 @@ export default function Home() {
   const about = getAboutData();
 
   const carouselImages: CarouselImageItem[] = [
-    { src: laptopImg, alt: "Coding on laptop", label: "Coffee & coding" },
-    { src: pianoImg, alt: "Playing piano", label: "Playing piano" },
-    { src: hikingImg, alt: "Hiking in nature", label: "Hiking in nature" },
-    { src: asuncionImg, alt: "Asunción, Paraguay", label: "Visiting my hometown Asunción, Paraguay" },
-    { src: goldenGateImg, alt: "Golden Gate Bridge", label: "My favorite place: Golden Gate Bridge" },
-    { src: healthyMealImg, alt: "Healthy Meal", label: "Preparing healthy meals" },
-    { src: soccerpyImg, alt: "Watching Py FIFA World Cup 2026", label: "Supporting 🇵🇾 in the FIFA World Cup 2026" },
+    { src: laptopImg, alt: "Coffee & coding", label: "Where curiosity becomes software." },
+    { src: pianoImg, alt: "Playing piano", label: "Patience, rhythm, and the satisfaction of deliberate practice." },
+    { src: hikingImg, alt: "Hiking in nature", label: "Progress comes one step at a time." },
+    { src: asuncionImg, alt: "Asunción, 🇵🇾", label: "Keeping connected to where my tech journey began" },
+    { src: goldenGateImg, alt: "Golden Gate Bridge", label: "A reminder of the beauty of bold structures." },
+    { src: healthyMealImg, alt: "Healthy cooking", label: "Small daily habits matter more than perfect plans." },
+    { src: soccerpyImg, alt: "Supporting 🇵🇾", label: "Together, even when the odds aren't in your favor" },
   ];
 
   return (
@@ -87,8 +87,8 @@ export default function Home() {
 
       <section className="w-full max-w-6xl mx-auto px-3">
         <div className="mb-10 text-center space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">The Human Side</h2>
-          <p className="text-muted-foreground">Beyond the code, here&apos;s what keeps me inspired.</p>
+          <h2 className="text-3xl font-bold tracking-tight">Where My Curiosity Begins</h2>
+          <p className="text-muted-foreground">Every experience teaches something worth bringing back to the craft.</p>
         </div>
 
         <div className="grid grid-cols-1 gap-16">

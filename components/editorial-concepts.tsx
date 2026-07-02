@@ -83,22 +83,18 @@ export default function EditorialConcepts() {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-start">
                             {/* Left: Statement */}
                             <div className="md:col-span-1">
-                                <span className="text-md uppercase font-mono tracking-widest text-accent mb-3 block">Now</span>
+                                <span className="text-md uppercase font-mono tracking-widest text-accent mb-3 block">TODAY</span>
                                 <h3 className="text-xl font-light text-foreground leading-snug italic tracking-tight">
-                                    {/* &ldquo;Right now, I&apos;m most excited about exploring AI, building thoughtful software, and never stopping learning.&rdquo; */}
-                                    This season of my career has been defined by curiosity.
+                                    The tools keep changing. The mindset doesn't.
                                 </h3>
                             </div>
                             {/* Right: Paragraphs */}
                             <div className="md:col-span-2 space-y-6 text-base text-muted-foreground leading-relaxed">
                                 <p>
-                                    I'm spending my time learning, building,
-                                    and asking better questions than I did yesterday.
+                                    I began my career building software on Agile teams where pair programming, continuous improvement, and close collaboration shaped how I think as an engineer. Those principles still guide me today.
                                 </p>
                                 <p>
-                                    AI is one part of that journey, but not the whole story.
-                                    What excites me most is combining strong engineering fundamentals with technologies
-                                    that make software more useful for real people.
+                                    I'm constantly learning, experimenting, and looking for ways to make technology more accessible and useful for others. That same curiosity now extends to AI and machine learning, which I'm exploring with the same mindset I've always had: ask questions, build things, and learn from the process.
                                 </p>
                             </div>
                         </div>
