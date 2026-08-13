@@ -6,12 +6,6 @@ export const metadata: Metadata = {
   description: "I am Carmen, a Mom and a Senior Software Engineer based in the San Francisco Bay Area, CA.",
 };
 
-interface PageProps {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
-export default async function AboutPage({ searchParams }: PageProps) {
-  const resolvedSearchParams = await searchParams;
-  const tab = resolvedSearchParams.tab === "experience" ? "experience" : "story";
-  return <AboutClient initialTab={tab} />;
+export default function AboutPage() {
+  return <AboutClient />;
 }

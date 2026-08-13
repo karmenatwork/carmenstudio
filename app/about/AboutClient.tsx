@@ -1,270 +1,315 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import aboutData from "@/data/about.json";
-import WorkExperience from "@/components/work-experience";
 import { Card } from "@/components/custom-ui/Card";
 import { Badge } from "@/components/custom-ui/Badge";
-import { SectionTitle } from "@/components/custom-ui/SectionTitle";
 
-export default function AboutClient({ initialTab = "story" }: { initialTab?: "story" | "experience" }) {
-    const [activeTab, setActiveTab] = useState<"story" | "experience">(initialTab);
-    const { fullName, headline, intro, mojo, bio, mailto } = aboutData;
-    const topRef = useRef<HTMLDivElement>(null);
-
-    const handleSwitchToExperience = () => {
-        setActiveTab("experience");
-        setTimeout(() => {
-            topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 50);
-    };
+export default function AboutClient() {
+    const { fullName, headline, aboutCraftSummary, shortBioI, mojo, bio, mailto } = aboutData;
 
     return (
-        <div ref={topRef} className="pb-20">
-            {/* Tab Switched Header */}
-            <div className="max-w-5xl mx-auto px-6 pt-10 flex justify-center mb-12">
-                <div className="inline-flex rounded-full bg-muted/60 p-1 border border-border/50">
-                    <button
-                        onClick={() => setActiveTab("story")}
-                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${activeTab === "story"
-                            ? "bg-background text-foreground shadow-sm"
-                            : "text-muted-foreground hover:text-foreground"
-                            }`}
-                    >
-                        My Story
-                    </button>
-                    <button
-                        onClick={() => setActiveTab("experience")}
-                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${activeTab === "experience"
-                            ? "bg-background text-foreground shadow-sm"
-                            : "text-muted-foreground hover:text-foreground"
-                            }`}
-                    >
-                        My Experience
-                    </button>
+        <div className="pb-24 pt-6 max-w-5xl mx-auto px-6 space-y-12">
+            {/* Header Hero Section */}
+            <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-3 lg:gap-x-8 items-start">
+                <div className="lg:col-span-2 lg:order-first space-y-5">
+                    <div>
+                        <span className="text-xs font-mono tracking-widest uppercase text-primary font-semibold">
+                            About & Craft
+                        </span>
+                        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground mt-1">
+                            {fullName}
+                        </h1>
+                        <p className="mt-2 text-base font-medium text-primary">
+                            {headline}
+                        </p>
+                    </div>
+
+                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                        {aboutCraftSummary}
+                    </p>
+                </div>
+
+                {/* Right Column (Photo & Quick Contact) */}
+                <div className="lg:pl-6 flex flex-col gap-5">
+                    <div className="relative aspect-square rotate-2 rounded-2xl bg-muted overflow-hidden shadow-lg border border-border/40 max-w-xs mx-auto lg:max-w-none w-full">
+                        <Image
+                            src="/avatar.jpg"
+                            alt="Carmen Díaz"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
+
+                    <div className="space-y-2.5 pt-1">
+                        <a
+                            href="https://www.linkedin.com/in/carmen-diaz/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+                        >
+                            <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                            LinkedIn Profile
+                        </a>
+
+                        <a
+                            href={`mailto:${mailto}`}
+                            className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+                        >
+                            <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            {mailto}
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            {/* Tab Content */}
-            {activeTab === "story" ? (
-                <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 gap-y-12 lg:grid-cols-3 lg:gap-x-12">
-                    {/* Left Column (Content) */}
-                    <div className="lg:col-span-2 lg:order-first">
-                        <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-                            {fullName}
-                        </h1>
-                        <div className="mt-1 mb-3 text-sm font-medium text-muted-foreground text-primary">{headline}</div>
-                        <div className="mt-6 space-y-7 text-base text-muted-foreground leading-relaxed">
-                            <p>{intro}</p>
-                            {bio.map((paragraph, i) => (
-                                <p key={i}>{paragraph}</p>
-                            ))}
-                            <p className="font-caveat text-xl text-primary font-medium mt-8 leading-snug">
-                                &ldquo;{mojo}&rdquo;
+            {/* Chapter 1: Curiosity, Dual Roots & Pedagogy */}
+            <section className="border-t border-border/60 pt-12 space-y-6">
+                <div className="flex items-center gap-3">
+                    <span className="text-xs font-mono text-primary font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-primary/10">
+                        01
+                    </span>
+                    <h2 className="text-2xl font-bold tracking-tight">Curiosity, Dual Roots & Pedagogy</h2>
+                </div>
+
+                <div className="space-y-5 text-base text-muted-foreground leading-relaxed max-w-3xl">
+                    <p>{bio[0]}</p>
+                    <p>{bio[1]}</p>
+                    <p>{bio[2]}</p>
+                    <p>{bio[3]}</p>
+                </div>
+            </section>
+
+            {/* Chapter 2: Engineering at Scale & High-Impact Systems */}
+            <section className="border-t border-border/60 pt-12 space-y-6">
+                <div className="flex items-center gap-3">
+                    <span className="text-xs font-mono text-primary font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-primary/10">
+                        02
+                    </span>
+                    <h2 className="text-2xl font-bold tracking-tight">Engineering at Scale & High-Impact Systems</h2>
+                </div>
+
+                <p className="text-base text-muted-foreground leading-relaxed max-w-3xl">
+                    My engineering career in the San Francisco Bay Area spans fast-paced startups in Fintech, Healthcare, and HR.
+                    Rather than viewing software as isolated code, I design backend APIs and product features focused on high scale, user accessibility, and measurable operational impact.
+                </p>
+
+                {/* Proof of Craft Callout Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+                    <Card className="p-6 space-y-3 hover:border-primary/40 transition-colors flex flex-col justify-between">
+                        <div className="space-y-3">
+                            <div className="flex justify-between items-start">
+                                <Badge variant="outline" className="text-xs">Health Tech</Badge>
+                            </div>
+                            <h3 className="text-lg font-bold">Localization & Dynamic Frontend</h3>
+                            <p className="text-xs font-semibold text-primary/90 uppercase tracking-wider">Mobile Health Consumer • Solutions Engineer</p>
+                            <p className="text-sm text-muted-foreground leading-relaxed pt-1">
+                                Integrated Lokalise API with Django to automate platform localization for US and Canadian markets. Built dynamic metadata frontend components to eliminate setup errors.
                             </p>
                         </div>
-                        <div className="mt-10 pt-6 border-t border-border/40">
-                            <button
-                                onClick={handleSwitchToExperience}
-                                className="inline-flex items-center gap-2 rounded-full border border-border bg-transparent hover:bg-primary/5 hover:border-primary/30 text-primary hover:text-primary h-12 px-6 text-sm font-semibold transition-all shadow-sm cursor-pointer"
-                            >
-                                Explore My Experience & Resume
-                                <svg
-                                    className="h-4 w-4"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </button>
+                    </Card>
+                    <Card className="p-6 space-y-3 hover:border-primary/40 transition-colors flex flex-col justify-between">
+                        <div className="space-y-3">
+                            <div className="flex justify-between items-start">
+                                <Badge variant="outline" className="text-xs">Fintech / HR</Badge>
+                            </div>
+                            <h3 className="text-lg font-bold">Real-Time POS Integration & Scale</h3>
+                            <p className="text-xs font-semibold text-primary/90 uppercase tracking-wider">Homebase • Delivery Lead & Software Engineer</p>
+                            <p className="text-sm text-muted-foreground leading-relaxed pt-1">
+                                Designed 10+ Rails REST APIs, including a real-time Clover POS integration serving over 175,000 business clients, alongside Sidekiq background engagement tools (+33% active participation).
+                            </p>
                         </div>
-                    </div>
+                    </Card>
 
-                    {/* Right Column (Photo & Contacts) */}
-                    <div className="lg:pl-6 flex flex-col gap-8">
-                        <div className="relative aspect-square rotate-3 rounded-2xl bg-muted overflow-hidden shadow-lg border border-border/40">
-                            <Image
-                                src="/avatar.jpg"
-                                alt="Carmen Díaz"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
+                    <Card className="p-6 space-y-3 hover:border-primary/40 transition-colors flex flex-col justify-between">
+                        <div className="space-y-3">
+                            <div className="flex justify-between items-start">
+                                <Badge variant="outline" className="text-xs">Healthcare</Badge>
+                            </div>
+                            <h3 className="text-lg font-bold">Data Automation & Inclusion</h3>
+                            <p className="text-xs font-semibold text-primary/90 uppercase tracking-wider">Omada Health • Software Engineer</p>
+                            <p className="text-sm text-muted-foreground leading-relaxed pt-1">
+                                Engineered a bulk provider data import service (Eligible API, Sidekiq) saving health providers 144 hours of manual processing. Launched Spanish onboarding flow (+14% reach).
+                            </p>
                         </div>
-
-                        <div className="space-y-4">
-                            <a
-                                href="https://www.linkedin.com/in/carmen-diaz/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
-                            >
-                                <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                    <rect x="2" y="9" width="4" height="12" />
-                                    <circle cx="4" cy="4" r="2" />
-                                </svg>
-                                Follow on LinkedIn
-                            </a>
-
-                            <a
-                                href={`mailto:${mailto}`}
-                                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
-                            >
-                                <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                    <polyline points="22,6 12,13 2,6" />
-                                </svg>
-                                {mailto}
-                            </a>
-                        </div>
-                    </div>
+                    </Card>
                 </div>
-            ) : (
-                <div className="space-y-16">
-                    {/* Header Action inside Tab */}
-                    <div className="max-w-5xl mx-auto px-6 w-full flex justify-between items-center border-b border-border/40 pb-6">
-                        <SectionTitle
-                            title="Work Experience"
-                            subtitle="My professional journey so far."
-                            className="mb-0"
-                        />
-                        <a
-                            href="/Carmen-Diaz-resume.pdf"
-                            download
-                            className="inline-flex items-center justify-center rounded-full border border-border bg-transparent hover:bg-muted text-foreground h-11 px-6 text-base font-medium transition-colors shadow-sm shrink-0"
-                        >
-                            <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                <polyline points="7 10 12 15 17 10" />
-                                <line x1="12" x2="12" y1="15" y2="3" />
-                            </svg>
-                            Download Resume
-                        </a>
+            </section>
+
+            {/* Chapter 3: The AI Shift & Continuous Craft */}
+            <section className="border-t border-border/60 pt-12 space-y-6">
+                <div className="flex items-center gap-3">
+                    <span className="text-xs font-mono text-primary font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-primary/10">
+                        03
+                    </span>
+                    <h2 className="text-2xl font-bold tracking-tight">The AI Shift & Continuous Craft</h2>
+                </div>
+
+                <div className="space-y-4 text-base text-muted-foreground leading-relaxed max-w-3xl">
+                    <p>{bio[4]}</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <Card className="p-6 border-l-4 border-l-primary shadow-sm space-y-3">
+                        <div className="flex justify-between items-start">
+                            <h3 className="text-lg font-bold">Applied AI Workflows & Consulting</h3>
+                            <Badge className="bg-primary text-primary-foreground font-semibold">2020 – Present</Badge>
+                        </div>
+                        <p className="text-xs font-semibold text-primary">Independent Engineering Consultant</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                            Architecting full-stack Next.js/Rails SaaS features enhanced with modern AI workflows (Gemini, Copilot, Agentic frameworks). Designed a K-8 AI framework boosting engagement by 30%.
+                        </p>
+                    </Card>
+
+                    <Card className="p-6 space-y-3">
+                        <div className="flex justify-between items-start">
+                            <h3 className="text-lg font-bold">AI & Machine Learning Bootcamp</h3>
+                            <Badge variant="outline">2024</Badge>
+                        </div>
+                        <p className="text-xs font-semibold text-primary">Caltech (California Institute of Technology)</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                            Immersive program covering Python, Data Science (Pandas, NumPy), Deep Learning (TensorFlow, PyTorch), Prompt Engineering, and Generative AI application architecture.
+                        </p>
+                    </Card>
+
+                    <Card className="p-6 md:col-span-2 space-y-4">
+                        <h3 className="text-base font-bold">Ongoing Specializations & Technical Growth</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-muted-foreground">
+                            <div className="flex items-start gap-2.5">
+                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                                <span>Agentic AI Nano Program — Udacity (In Progress)</span>
+                            </div>
+                            <div className="flex items-start gap-2.5">
+                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                                <span>Generative AI for Software Developers — IBM (In Progress)</span>
+                            </div>
+                            <div className="flex items-start gap-2.5">
+                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                                <span>Google Prompting Essentials — Google (2025)</span>
+                            </div>
+                            <div className="flex items-start gap-2.5">
+                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                                <span>AI for Good Specialization — DeepLearning.AI (2024)</span>
+                            </div>
+                        </div>
+                    </Card>
+                </div>
+            </section>
+
+            {/* Chapter 4: Community Leadership & Advocacy */}
+            <section className="border-t border-border/60 pt-12 space-y-6">
+                <div className="flex items-center gap-3">
+                    <span className="text-xs font-mono text-primary font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-primary/10">
+                        04
+                    </span>
+                    <h2 className="text-2xl font-bold tracking-tight">Community Leadership & Advocacy</h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <Card className="p-6 flex flex-col justify-between space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="text-lg font-bold leading-tight">Women Techmakers Ambassador</h3>
+                            <p className="text-xs font-semibold text-primary">Google Cloud • Kuñatech PY • Technovation</p>
+                            <p className="text-xs text-muted-foreground leading-relaxed pt-1">
+                                Co-led cloud training workshops for 50 women in tech in partnership with Google Cloud, Kuñatech, and SheWorks.
+                            </p>
+                        </div>
+                        <span className="text-xs text-muted-foreground font-mono">Ongoing Advocacy</span>
+                    </Card>
+
+                    <Card className="p-6 flex flex-col justify-between space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="text-lg font-bold leading-tight">IA Week LATAM Co-organizer</h3>
+                            <p className="text-xs font-semibold text-primary">AI & Data Science Paraguay</p>
+                            <p className="text-xs text-muted-foreground leading-relaxed pt-1">
+                                Organizing developer initiatives and artificial intelligence awareness events across Latin America.
+                            </p>
+                        </div>
+                        <span className="text-xs text-muted-foreground font-mono">LATAM Community</span>
+                    </Card>
+
+                    <Card className="p-6 flex flex-col justify-between space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="text-lg font-bold leading-tight">Railsbridge Contributor</h3>
+                            <p className="text-xs font-semibold text-primary">Bridge Foundry</p>
+                            <p className="text-xs text-muted-foreground leading-relaxed pt-1">
+                                Mentoring non-traditional beginners in web development, Ruby on Rails, and foundational programming.
+                            </p>
+                        </div>
+                        <span className="text-xs text-muted-foreground font-mono">Tech Mentorship</span>
+                    </Card>
+                </div>
+            </section>
+
+            {/* Philosophy Highlight Quote */}
+            <section className="border-t border-border/60 pt-12">
+                <div className="p-8 rounded-2xl bg-primary/5 border border-primary/10 text-center space-y-2">
+                    <p className="font-caveat text-2xl md:text-3xl text-primary font-semibold">
+                        &ldquo;{mojo}&rdquo;
+                    </p>
+                    <p className="text-xs uppercase tracking-widest font-mono text-muted-foreground">Carmen Díaz — Engineering Philosophy</p>
+                </div>
+            </section>
+
+            {/* Credentials Summary & PDF Résumé Gateway */}
+            <section className="border-t border-border/60 pt-12 space-y-6">
+                <div className="space-y-2">
+                    <h2 className="text-2xl font-bold tracking-tight">Academic Foundations</h2>
+                    <p className="text-sm text-muted-foreground">Formal degrees grounding my engineering and product perspective.</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <Card className="p-6 space-y-1">
+                        <h3 className="text-base font-bold">B.S. Computer Systems Analysis</h3>
+                        <p className="text-xs font-semibold text-primary">Catholic University of Asunción</p>
+                        <p className="text-xs text-muted-foreground pt-1">Asunción, Paraguay</p>
+                    </Card>
+
+                    <Card className="p-6 space-y-1">
+                        <h3 className="text-base font-bold">BBA Business Administration</h3>
+                        <p className="text-xs font-semibold text-primary">National University of Asunción</p>
+                        <p className="text-xs text-muted-foreground pt-1">Asunción, Paraguay</p>
+                    </Card>
+
+                    <Card className="p-6 space-y-1">
+                        <h3 className="text-base font-bold">University Didactics</h3>
+                        <p className="text-xs font-semibold text-primary">National University of Asunción</p>
+                        <p className="text-xs text-muted-foreground pt-1">Specialization in Pedagogy</p>
+                    </Card>
+                </div>
+
+                {/* Prominent PDF Résumé Gateway Card */}
+                <div className="mt-8 p-8 rounded-2xl border border-border bg-card shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div className="space-y-2 text-center md:text-left">
+                        <h3 className="text-xl font-bold tracking-tight">Need a Complete Chronological History?</h3>
+                        <p className="text-sm text-muted-foreground max-w-xl leading-relaxed">
+                            My downloadable résumé contains the full, uninterrupted timeline of employers, exact dates, and technical environments formatted for formal recruitment pipelines.
+                        </p>
                     </div>
 
-                    {/* Full Timeline off */}
-                    <WorkExperience limit={3} bulletsLimit={2} showSkills={false} showTitle={false} />
-
-                    {/* Continuing Education Section */}
-                    <section className="px-6 max-w-5xl mx-auto w-full">
-                        <div className="border-t border-border/60 pt-12">
-                            <h2 className="text-2xl font-bold tracking-tight mb-8">Continuing Education</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <Card className="p-6 border-l-4 border-l-primary shadow-sm">
-                                    <div className="flex justify-between items-start gap-2">
-                                        <h3 className="text-lg font-bold leading-tight">AI & Machine Learning Bootcamp</h3>
-                                        <Badge className="whitespace-nowrap">2024</Badge>
-                                    </div>
-                                    <p className="text-primary font-medium text-sm mt-1">Caltech (California Institute of Technology)</p>
-                                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-                                        Immersive program focusing on Python, Data Science (Pandas, NumPy), Foundational ML (TensorFlow, PyTorch), Deep Learning, and Generative AI.
-                                    </p>
-                                </Card>
-                                <Card className="p-6">
-                                    <div className="flex justify-between items-start gap-2">
-                                        <h3 className="text-lg font-bold leading-tight">Data Science Fundamentals</h3>
-                                        <Badge variant="outline" className="whitespace-nowrap">2023</Badge>
-                                    </div>
-                                    <p className="text-primary font-medium text-sm mt-1">National University of Asunción</p>
-                                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-                                        Completed comprehensive training in data science concepts utilizing Python, Pandas, NumPy, and Matplotlib.
-                                    </p>
-                                </Card>
-                                <Card className="p-6 md:col-span-2">
-                                    <h3 className="text-base font-bold mb-4">Additional Technical Training</h3>
-                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3.5 text-sm text-muted-foreground">
-                                        <li className="flex items-start gap-2.5">
-                                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
-                                            <span>Agentic AI Nano Program — Udacity (In Progress)</span>
-                                        </li>
-                                        <li className="flex items-start gap-2.5">
-                                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
-                                            <span>Generative AI for Software Developers — IBM (In Progress)</span>
-                                        </li>
-                                        <li className="flex items-start gap-2.5">
-                                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
-                                            <span>Google Prompting Essentials — Google (Apr 2025)</span>
-                                        </li>
-                                        <li className="flex items-start gap-2.5">
-                                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
-                                            <span>AI for Good Specialization — DeepLearning.AI (2024)</span>
-                                        </li>
-                                        <li className="flex items-start gap-2.5 md:col-span-2">
-                                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
-                                            <span>Generative AI for Everyone — DeepLearning.AI (2023)</span>
-                                        </li>
-                                    </ul>
-                                </Card>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Education Section */}
-                    <section className="px-6 max-w-5xl mx-auto w-full">
-                        <div className="border-t border-border/60 pt-12">
-                            <h2 className="text-2xl font-bold tracking-tight mb-8">Education</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <Card className="p-6">
-                                    <h3 className="text-lg font-bold">B.S. Computer System Analysis</h3>
-                                    <p className="text-primary font-medium text-sm mt-0.5">Catholic University of Asunción</p>
-                                    <p className="text-xs text-muted-foreground mt-2">Asunción, Paraguay</p>
-                                </Card>
-                                <Card className="p-6">
-                                    <h3 className="text-lg font-bold">BBA Business Administration and Management</h3>
-                                    <p className="text-primary font-medium text-sm mt-0.5">National University of Asunción</p>
-                                    <p className="text-xs text-muted-foreground mt-2">Asunción, Paraguay</p>
-                                </Card>
-                                <Card className="p-6 md:col-span-2">
-                                    <h3 className="text-lg font-bold">Specialization in University Didactics</h3>
-                                    <p className="text-primary font-medium text-sm mt-0.5">National University of Asunción</p>
-                                    <p className="text-xs text-muted-foreground mt-2">Asunción, Paraguay</p>
-                                </Card>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Volunteer Section */}
-                    <section className="px-6 max-w-5xl mx-auto w-full">
-                        <div className="border-t border-border/60 pt-12">
-                            <h2 className="text-2xl font-bold tracking-tight mb-8">Volunteer & Community</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <Card className="p-6 flex flex-col justify-between">
-                                    <div>
-                                        <h3 className="text-lg font-bold leading-tight">Event Co-organizer</h3>
-                                        <p className="text-primary font-medium text-sm mt-0.5">IA Week LATAM</p>
-                                    </div>
-                                    <p className="text-xs text-muted-foreground mt-4">Nov 2025</p>
-                                </Card>
-                                <Card className="p-6 flex flex-col justify-between">
-                                    <div>
-                                        <h3 className="text-lg font-bold leading-tight">Technical Community Ambassador</h3>
-                                        <p className="text-primary font-medium text-sm mt-0.5">Women Techmakers Ambassador</p>
-                                        <p className="text-xs text-muted-foreground mt-2">
-                                            Technovation | Kuñatech PY (Paraguayan Women in Tech) | AI & Data Science Paraguay
-                                        </p>
-                                    </div>
-                                    <p className="text-xs text-muted-foreground mt-4">Ongoing Advocacy</p>
-                                </Card>
-                                <Card className="p-6 flex flex-col justify-between">
-                                    <div>
-                                        <h3 className="text-lg font-bold leading-tight">Early Contributor</h3>
-                                        <p className="text-primary font-medium text-sm mt-0.5">Railsbridge</p>
-                                        <p className="text-xs text-muted-foreground mt-2 font-normal">
-                                            Bridge Foundry (Supporting tech education)
-                                        </p>
-                                    </div>
-                                    <p className="text-xs text-muted-foreground mt-4">Tech Mentorship</p>
-                                </Card>
-                            </div>
-                        </div>
-                    </section>
+                    <a
+                        href="/Carmen-Diaz-resume.pdf"
+                        download
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 px-8 text-sm font-semibold transition-all shadow-md shrink-0 gap-2.5 cursor-pointer"
+                    >
+                        <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Download Full Résumé (PDF)
+                    </a>
                 </div>
-            )}
+            </section>
         </div>
     );
 }

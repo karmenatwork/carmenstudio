@@ -1,7 +1,6 @@
 import { getAboutData } from "@/lib/getAbout";
 import { Carousel, CarouselImageItem } from "@/components/carousel";
 import CoreStrengths from "@/components/core-strengths";
-import EditorialConcepts from "@/components/editorial-concepts";
 import Link from "next/link";
 
 // Import images
@@ -27,7 +26,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col gap-10 pb-10">
+    <div className="flex flex-col gap-20 pb-16">
       {/* Hero Section */}
       <section id="about" className="relative pt-20 pb-5 px-6 max-w-5xl mx-auto w-full flex flex-col items-center text-center gap-8">
         <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-2">
@@ -102,15 +101,13 @@ export default function Home() {
       {/* Core Strengths Section */}
       <CoreStrengths showSkills={false} />
 
-      <EditorialConcepts />
-
-      {/* Career History Link */}
+      {/* Career & Craft Link */}
       <section className="flex justify-center py-6">
         <Link
-          href="/about?tab=experience"
+          href="/about"
           className="inline-flex items-center justify-center rounded-full border border-border bg-transparent hover:bg-muted text-foreground h-12 px-8 text-base font-semibold transition-colors shadow-sm"
         >
-          Explore Full Career History &rarr;
+          Explore My Story & Craft &rarr;
         </Link>
       </section>
 
