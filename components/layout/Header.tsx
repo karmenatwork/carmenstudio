@@ -17,16 +17,21 @@ export function Header() {
         <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
             <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="relative h-9 w-9 overflow-hidden rounded-full ring-2 ring-primary/10">
-                        <Link href="/" className="transition-opacity hover:opacity-80" onClick={() => setIsMenuOpen(false)}>
-                            <Image
-                                src="/avatar.jpg"
-                                alt="Carmen"
-                                fill
-                                className="object-cover"
-                            />
-                        </Link>
-                    </div>
+                    <Link
+                        href="/"
+                        className="relative block h-9 w-9 overflow-hidden rounded-full ring-2 ring-primary/10 transition-opacity hover:opacity-80 select-none"
+                        onClick={() => setIsMenuOpen(false)}
+                        onContextMenu={(e) => e.preventDefault()}
+                    >
+                        <Image
+                            src="/avatar.jpg"
+                            alt="Carmen"
+                            fill
+                            sizes="36px"
+                            className="object-cover select-none pointer-events-none"
+                            draggable={false}
+                        />
+                    </Link>
                     <Link href="/" className="text-xl font-bold tracking-tight text-foreground transition-opacity hover:opacity-80" onClick={() => setIsMenuOpen(false)}>
                         Carmen&apos;s <span className="text-primary">Studio</span>
                     </Link>

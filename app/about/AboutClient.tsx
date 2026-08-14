@@ -33,14 +33,20 @@ export default function AboutClient() {
 
                 {/* Right Column (Photo & Quick Contact) */}
                 <div className="lg:pl-6 flex flex-col gap-5">
-                    <div className="relative aspect-square rotate-2 rounded-2xl bg-muted overflow-hidden shadow-lg border border-border/40 max-w-xs mx-auto lg:max-w-none w-full">
+                    <div
+                        className="relative aspect-square rotate-2 rounded-2xl bg-muted overflow-hidden shadow-lg border border-border/40 max-w-xs mx-auto lg:max-w-none w-full select-none"
+                        onContextMenu={(e) => e.preventDefault()}
+                    >
                         <Image
                             src="/avatar.jpg"
-                            alt="Carmen Díaz"
+                            alt="Personal photo of Carmen Díaz"
                             fill
-                            className="object-cover"
+                            sizes="(min-width: 1024px) 320px, (min-width: 640px) 320px, 100vw"
+                            className="object-cover select-none pointer-events-none"
                             priority
+                            draggable={false}
                         />
+                        <div className="absolute inset-0 z-10" />
                     </div>
 
                     <div className="space-y-2.5 pt-1">
@@ -184,10 +190,6 @@ export default function AboutClient() {
                     <Card className="p-6 md:col-span-2 space-y-4">
                         <h3 className="text-base font-bold">Ongoing Specializations & Technical Growth</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-muted-foreground">
-                            <div className="flex items-start gap-2.5">
-                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                                <span>Agentic AI Nano Program — Udacity (In Progress)</span>
-                            </div>
                             <div className="flex items-start gap-2.5">
                                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                                 <span>Generative AI for Software Developers — IBM (In Progress)</span>

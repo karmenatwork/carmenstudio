@@ -39,9 +39,14 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground uppercase tracking-widest">
-                    <p>&copy; {new Date().getFullYear()} Carmen Díaz</p>
-                    <p className="wrap-break-word md:ml-auto md:text-right">Made with ❤️ in California with 🇵🇾 flavour </p>
+                <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs text-muted-foreground">
+                    <div className="space-y-1">
+                        <p className="uppercase tracking-widest">&copy; {new Date().getFullYear()} Carmen Díaz · All rights reserved</p>
+                        <p className="text-[11px] text-muted-foreground/80 normal-case tracking-normal">
+                            All site photography features genuine personal moments. Images may not be copied, reproduced, or used in AI datasets without written permission.
+                        </p>
+                    </div>
+                    <p className="wrap-break-word md:ml-auto md:text-right uppercase tracking-widest">Made with ❤️ in California with 🇵🇾 flavour </p>
                 </div>
             </div>
         </footer>

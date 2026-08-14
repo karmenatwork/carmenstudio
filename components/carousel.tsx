@@ -200,18 +200,23 @@ export function Carousel({
                                     enableRotation && rotations[imageIndex % rotations.length],
                                 )}
                             >
-                                <div className="aspect-square overflow-hidden relative border border-black/5 bg-zinc-200 w-full">
+                                <div
+                                    className="aspect-square overflow-hidden relative border border-black/5 bg-zinc-200 w-full select-none"
+                                    onContextMenu={(e) => e.preventDefault()}
+                                >
                                     <Image
                                         src={image.src}
                                         alt={image.alt || ""}
                                         fill
                                         sizes={`(min-width: 1024px) ${100 / effectiveImagesPerView}vw, (min-width: 640px) ${80 / effectiveImagesPerView}vw, ${50 / effectiveImagesPerView}vw`}
-                                        className="object-cover"
+                                        className="object-cover select-none pointer-events-none"
+                                        draggable={false}
                                         priority={
                                             imageIndex >= currentIndex &&
                                             imageIndex < currentIndex + effectiveImagesPerView
                                         }
                                     />
+                                    <div className="absolute inset-0 z-10" />
                                 </div>
                                 {image.label && (
                                     <div className="mt-4 text-center">
@@ -234,23 +239,26 @@ export function Carousel({
                             >
                                 <div
                                     className={clsx(
-                                        'h-full w-full rounded-xl sm:rounded-2xl overflow-hidden relative group',
+                                        'h-full w-full rounded-xl sm:rounded-2xl overflow-hidden relative group select-none',
                                         imageContainerClassName,
                                     )}
+                                    onContextMenu={(e) => e.preventDefault()}
                                 >
                                     <Image
                                         src={image.src}
                                         alt={image.alt || `Slide ${imageIndex + 1}`}
                                         fill
                                         sizes={`(min-width: 1024px) ${100 / effectiveImagesPerView}vw, (min-width: 640px) ${80 / effectiveImagesPerView}vw, ${50 / effectiveImagesPerView}vw`}
-                                        className={clsx(imageClassName)}
+                                        className={clsx(imageClassName, 'select-none pointer-events-none')}
+                                        draggable={false}
                                         priority={
                                             imageIndex >= currentIndex &&
                                             imageIndex < currentIndex + effectiveImagesPerView
                                         }
                                     />
+                                    <div className="absolute inset-0 z-10" />
                                     {image.label && (
-                                        <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-black/60 backdrop-blur-md p-3">
+                                        <div className="absolute inset-x-0 bottom-0 z-20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-black/60 backdrop-blur-md p-3">
                                             <p className="text-white text-xs font-medium text-center">{image.label}</p>
                                         </div>
                                     )}

@@ -85,9 +85,14 @@ export default function Home() {
       </section>
 
       <section className="w-full max-w-6xl mx-auto px-3">
-        <div className="mb-10 text-center space-y-2">
+        <div className="mb-10 text-center space-y-3">
           <h2 className="text-3xl font-bold tracking-tight">Where My Curiosity Begins</h2>
           <p className="text-muted-foreground">Every experience teaches something worth bringing back to the craft.</p>
+          <div className="pt-1">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-muted/70 px-3 py-1 text-xs text-muted-foreground border border-border/50">
+              <span>📷</span> Real-life snapshots · No AI generation
+            </span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-16">
